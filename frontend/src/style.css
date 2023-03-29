@@ -1,0 +1,789 @@
+/* Welcome Page */
+.welcome__bg {
+    background-image: url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80");
+    height: 92vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.home-message-icon {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* End */
+
+/* Login */
+.login__bg {
+    background-image: url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80");
+    height: 92vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+/* End */
+
+.brand-name {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.brand-name:hover {
+    color: #b7b5b5;
+}
+
+.c-black {
+    color: black !important;
+}
+
+/* for height of chat home page */
+.lbEMNF,
+.kPRZhb,
+.containerhome,
+.fuQLtB,
+.sc-dkrFOg,
+.jgAKMf,
+.edfprl,
+.sc-ipEyDJ {
+    height: calc(100vh - 62px) !important;
+}
+
+/* welcome page */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+
+.welcome-container img {
+    height: 20rem;
+}
+
+.welcome-container span {
+    color: #4e0eff;
+}
+
+
+
+
+
+
+
+/* set svatar */
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: #131324;
+    height: 100vh;
+    width: 100vw;
+}
+
+.title-container h1 {
+    color: white;
+}
+
+.avatar-container .avatars {
+    display: flex;
+    gap: 2rem;
+}
+
+.avatar-container .avatars .avatar {
+    border: 0.4rem solid transparent;
+    padding: 0.4rem;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.avatar-container .avatars .avatar img {
+    height: 6rem;
+    transition: 0.5s ease-in-out;
+}
+
+.avatar-container .avatars .selected {
+    border: 0.4rem solid #4e0eff;
+}
+
+.submit-btn {
+    background-color: #4e0eff;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background-color: #4e0eff;
+}
+
+
+
+
+
+
+
+
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    overflow: auto;
+    /* gap: 0.8rem;
+    padding: 1rem 0rem; */
+}
+
+.contact {
+    background-color: #cac2c25c;
+    /* min-height: 3rem; */
+    cursor: pointer;
+    width: 97%;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+    margin: 0.3rem;
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+
+.avatar img {
+    height: 1.8rem;
+}
+
+.contact .username span {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+/* home */
+.home-main-div {
+    /* height: 100vh;
+    width: 100vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    background-color: #131324;
+}
+
+.containerhome {
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000076;
+    display: grid;
+    grid-template-columns: 25% 75%;
+
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+    .containerhome {
+        grid-template-columns: 35% 65%;
+    }
+}
+
+
+
+
+
+
+
+/* contacts */
+.contacts-main-div {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    overflow: hidden;
+    background-color: #080420;
+}
+
+.contacts-main-div .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    padding: 1rem 0rem;
+    /* &::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        background-color: #ffffff39;
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    } */
+}
+
+.contacts-main-div .contacts::-webkit-scrollbar {
+    width: 0.2rem;
+}
+
+.contacts-main-div .contacts::-webkit-scrollbar-thumb {
+    background-color: #ffffff39;
+    width: 0.1rem;
+    border-radius: 1rem;
+}
+
+.contacts .contact {
+    background-color: #ffffff34;
+    /* min-height: 3rem; */
+    cursor: pointer;
+    /* width: 90%; */
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+    display: flex;
+    /* gap: 1rem; */
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+
+.selected {
+    background-color: #9a86f3;
+}
+
+.contact-accordion {
+    width: 90%;
+    background-color: #080420 !important;
+    color: white !important;
+}
+
+.contact-accordion-details {
+    padding: 0 !important;
+}
+
+.MuiAccordionSummary-root {
+    padding: 0 !important;
+    min-height: 30px !important;
+}
+
+.MuiAccordionSummary-content {
+    margin: 0 !important;
+}
+
+.accordion-title {
+    margin-left: 10px !important;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    margin: 0 !important;
+}
+
+/* .MuiCollapse-root {
+    margin-left: 10px !important;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* chat */
+.main-div {
+    display: grid;
+    /* grid-template-rows: 10% 80% 10%; */
+    grid-template-rows: auto;
+    gap: 0.1rem;
+    overflow: hidden;
+
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+    .main-div {
+        /* grid-template-rows: 15% 70% 15%; */
+        grid-template-rows: auto;
+    }
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 1rem;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-details .avatar img {
+    height: 2.5rem;
+}
+
+.user-details .username span {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+}
+
+.chat-messages {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: auto;
+
+    height: 31rem !important;
+
+    /* &::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        background-color: #ffffff39;
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    } */
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 0.2rem;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: #ffffff39;
+    width: 0.1rem;
+    border-radius: 1rem;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+}
+
+.message .content {
+    max-width: 40%;
+    overflow-wrap: break-word;
+    padding: 0.4rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 1rem;
+    color: #d1d1d1;
+
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+    .message .content {
+        max-width: 70%;
+    }
+}
+
+.content p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.sended {
+    justify-content: flex-end;
+}
+
+.sended .content {
+    background-color: #4f04ff21;
+}
+
+.received {
+    justify-content: flex-start;
+}
+
+.received .content {
+    background-color: #9900ff20;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* chat input */
+.chat-input-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 5% 95%;
+    background-color: #080420;
+    padding: 0 2rem;
+    height: 60px !important;
+
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+    .chat-input-container {
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+}
+
+.chat-input-container .button-container {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 1rem;
+}
+
+.button-container .emoji {
+    position: relative;
+}
+
+.button-container .emoji svg {
+    font-size: 1.5rem;
+    color: #ffff00c8;
+    cursor: pointer;
+}
+
+.button-container .emoji .EmojiPickerReact {
+    position: absolute;
+    top: -460px;
+    background-color: #080420;
+}
+
+.emoji-scroll-wrapper::-webkit-scrollbar {
+    background-color: #080420;
+    width: 5px;
+    /* &-thumb {
+      background-color: #9a86f3;
+    } */
+}
+
+.emoji-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #9a86f3;
+}
+
+.epr-category-nav button {
+    filter: contrast(0);
+}
+
+.epr-search {
+    background-color: transparent;
+    border-color: #9a86f3;
+}
+
+.epr-emoji-category-label {
+    background-color: #080420;
+}
+
+.input-container {
+    width: 100%;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: #ffffff34;
+}
+
+.input-container input {
+    width: 90%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+
+    /* &::selection {
+        background-color: #9a86f3;
+      }
+      &:focus {
+        outline: none;
+      } */
+}
+
+.input-container input::selection {
+    background-color: #9a86f3;
+}
+
+.input-container input:focus {
+    outline: none;
+}
+
+.input-container button {
+    padding: 0.3rem 2rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9a86f3;
+    border: none;
+
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+    .input-container button {
+        padding: 0.3rem 1rem;
+    }
+
+    .input-container button svg {
+        font-size: 1rem;
+    }
+}
+
+.input-container button svg {
+    font-size: 2rem;
+    color: white;
+}
+
+
+
+
+
+
+
+
+/* sidebar */
+.sidebar-div {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background-color: #080420;
+    z-index: 99;
+    overflow: auto;
+    right: 0;
+    display: none;
+}
+
+
+
+
+
+
+
+
+/* loader */
+.loader {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 5px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+}
+
+
+
+
+
+.modal-content {
+    background-color: #313131;
+    color: #ffffff
+}
+
+.modal-input {
+    background-color: #00000059 !important;
+    color: white !important;
+}
+
+
+
+
+
+
+
+
+
+
+.ai-main-div {
+    background: #343541;
+}
+
+#aiapp {
+    width: 100vw;
+    height: 90vh;
+    background: #343541;
+    color: white !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#chat-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+
+    align-items: center;
+}
+
+#chat-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.wrapper {
+    width: 100%;
+    padding: 15px;
+    max-width: 800px !important;
+}
+
+.ai {
+    background: #40414F;
+}
+
+.ai-chat {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ai-chat-profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+
+    background: #5436DA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-chat .ai-chat-profile {
+    background: #10a37f;
+}
+
+.ai-chat-profile img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.ai-chat-message {
+    flex: 1;
+
+    color: #dcdcdc !important;
+    /* font-size: 20px; */
+
+    max-width: 100%;
+    overflow-x: scroll;
+
+    /*
+     * white space refers to any spaces, tabs, or newline characters that are used to format the CSS code
+     * specifies how white space within an element should be handled. It is similar to the "pre" value, which tells the browser to treat all white space as significant and to preserve it exactly as it appears in the source code.
+     * The pre-wrap value allows the browser to wrap long lines of text onto multiple lines if necessary.
+     * The default value for the white-space property in CSS is "normal". This tells the browser to collapse multiple white space characters into a single space, and to wrap text onto multiple lines as needed to fit within its container.
+    */
+    white-space: pre-wrap;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    padding: 0px 5px;
+}
+
+.center-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* hides scrollbar */
+.ai-chat-message::-webkit-scrollbar {
+    display: none;
+}
+
+.ai-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    background: #40414F;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    justify-content: center;
+}
+
+.ai-form-box {
+    max-width: 800px !important;
+    width: 100% !important;
+    display: flex;
+}
+
+.ai-textarea {
+    width: 100%;
+
+    color: #fff;
+    font-size: 18px;
+
+    padding: 10px;
+    background: transparent;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.ai-textarea-btn {
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.ai-form img {
+    width: 30px;
+    height: 30px;
+}
