@@ -11,6 +11,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import Groups3Icon from '@mui/icons-material/Groups3';
 import { Link } from "react-router-dom";
 // import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -27,11 +28,11 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          {/* <p className="title">MAIN</p>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
-          </li>
+          </li> */}
           <p className="title">LISTS</p>
           <Link to="/admin/users" style={{ textDecoration: "none" }}>
             <li>
@@ -41,7 +42,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/admin/groups" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
+              <Groups3Icon className="icon" />
               <span>Groups</span>
             </li>
           </Link>

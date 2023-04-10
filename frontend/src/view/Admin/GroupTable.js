@@ -1,6 +1,6 @@
 // import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "./datatablesource";
+import { groupColumns, userColumns, userRows } from "./datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { store } from "../..";
@@ -62,8 +62,8 @@ const GroupTable = (props) => {
         </div>
         <DataGrid
             className="datagrid"
-            rows={getCurrentState().userData}
-            columns={userColumns.concat(actionColumn)}
+            rows={getCurrentState().groupData}
+            columns={groupColumns.concat(actionColumn)}
             pageSize={9}
             rowsPerPageOptions={[9]}
             getRowId={(row) => row._id}
