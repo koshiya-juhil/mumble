@@ -87,7 +87,7 @@ function GroupSidebar(props) {
                     userId : user._id
                 })
 
-                console.log(data)
+                // console.log(data)
 
                 await props.setProps({selectedChat : data})
                 // to update data in redux
@@ -110,7 +110,7 @@ function GroupSidebar(props) {
                 chatId : getCurrentState().selectedChat._id,
                 users : JSON.stringify(selectedUsers.map(u => u._id))
             })
-            console.log(data)
+            // console.log(data)
 
 
             await props.setProps({selectedChat : data})
@@ -131,7 +131,7 @@ function GroupSidebar(props) {
                 chatId : getCurrentState().selectedChat._id,
                 userId : user._id
             })
-            console.log(data)
+            // console.log(data)
 
             await props.setProps({selectedChat : data})
             // to update data in redux

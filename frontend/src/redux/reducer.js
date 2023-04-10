@@ -5,12 +5,15 @@ const initialState = {
     currentUser : {},
     selectedChat : {},
     notifications : [],
+    modal : {},
+    formData : {},
+    groupData : []
 }
 
 const reducer = (state = initialState, action) => {
 
-    console.log(state)  
-    console.log(action)
+    // console.log(state)  
+    // console.log(action)
 
     switch(action.type) {
         case "setProps": 
@@ -22,6 +25,9 @@ const reducer = (state = initialState, action) => {
                 currentUser : action.payload.currentUser == undefined ? state.currentUser : action.payload.currentUser,
                 selectedChat : action.payload.selectedChat == undefined ? state.selectedChat : action.payload.selectedChat,
                 notifications : action.payload.notifications == undefined ? state.notifications : action.payload.notifications,
+                modal : action.payload.modal == undefined ? state.modal : action.payload.modal,
+                formData : action.payload.formData == undefined ? state.formData : action.payload.formData,
+                groupData : action.payload.groupData == undefined ? state.groupData : action.payload.groupData,
             }
         
         default :

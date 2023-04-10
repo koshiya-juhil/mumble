@@ -28,7 +28,7 @@ function MumbleAI() {
     }
 
     const typeText = (element, text) => {
-        console.log(element, text)
+        // console.log(element, text)
         let index = 0
 
         let interval = setInterval(() => {
@@ -42,7 +42,7 @@ function MumbleAI() {
     }
 
     const chatStripe = async (isAi, value, id) => {
-        console.log(isAi, value, id)
+        // console.log(isAi, value, id)
         return (
             `<div class="center-div ${isAi && 'ai'}">
                 <div class="wrapper">
@@ -98,7 +98,7 @@ function MumbleAI() {
         chatContainer.scrollTop = chatContainer.scrollHeight
         const messageDiv = document.getElementById(id)
         
-        console.log("messageDiv", messageDiv)
+        // console.log("messageDiv", messageDiv)
         
         loader(messageDiv)
         

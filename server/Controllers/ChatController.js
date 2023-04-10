@@ -72,6 +72,27 @@ const fetchChats = async (req, res) => {
     }
 }
 
+// list all group
+const listGroups = async (req, res) => {
+    try {
+        Chat.find({ isGroupChat : true })
+            .populate("users", "-password")
+            .populate("groupAdmin", "-password")
+            .populate("latestMessage")
+            .sort({ updatedAt : -1 })
+            .then(async (results) => {
+                results = await UserModel.populate(results, {
+                    path : "latestMessage.sender",
+                    select : "username avatarImage email"
+                })
+                res.status(200).send(results)
+            })
+    } catch (error) {
+        res.status(400)
+        throw new Error(error.message)
+    }
+}
+
 // create group chat 
 const createGroupChat = async (req, res) => {
     if (!req.body.users || !req.body.name) {
@@ -185,4 +206,4 @@ const removeFromGroup = async (req, res) => {
     }
 }
 
-module.exports = { accessChat, fetchChats, createGroupChat, updateGroup, addToGroup, removeFromGroup }
+module.exports = { accessChat, fetchChats, createGroupChat, updateGroup, addToGroup, removeFromGroup, listGroups }

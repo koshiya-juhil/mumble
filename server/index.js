@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const authRoutes = require("./Routes/AuthRoutes")
+const userRoute = require("./Routes/UserRoute")
 const messageRoute = require("./Routes/MessagesRoute")
 const chatRoute = require("./Routes/ChatRoute")
 const MumbleAIRoute = require("./Routes/MumbleAIRoute")
@@ -42,6 +43,7 @@ app.use(
 app.use(express.json())
 
 app.use("/", authRoutes)
+app.use("/user", userRoute)
 app.use("/messages", messageRoute)
 app.use("/chat", chatRoute)
 app.use("/mumbleai", MumbleAIRoute)
@@ -100,17 +102,5 @@ io.on("connection", (socket) => {
         console.log("User Disconnected")
         socket.leave(userId)
     })
-
-    // global.chatSocket = socket
-    // socket.on("add-user", (userId) => {
-    //     onlineUsers.set(userId, socket.id)
-    // })
-
-    // socket.on("send-msg", (data) => {
-    //     const sendUserSocket = onlineUsers.get(data.to)
-    //     if(sendUserSocket) { // if user is online
-    //         socket.to(sendUserSocket).emit("msg-receive", data.message)
-    //     }
-    // })
 })
 // end

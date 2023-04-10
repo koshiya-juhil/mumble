@@ -787,3 +787,231 @@
     width: 30px;
     height: 30px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADMIN */
+
+.sidebar {
+    border-right: 0.5px solid rgb(230, 227, 227);
+    min-height: 100vh;
+    background-color: #40414F;
+    color: white;
+    width: 10rem;
+}
+
+.sidebar-center {
+    padding: 10px 5px;
+}
+
+.sidebar-center > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-center > ul > li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.sidebar-center > ul > li:hover {
+    background-color: #1d1d20;
+}
+
+.sidebar-center > ul > li > span {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-left: 10px;
+}
+
+
+
+.admin-sidebar {
+    flex: 1;
+    border-right: 0.5px solid rgb(230, 227, 227);
+    min-height: 100vh;
+    background-color: white;
+}
+
+.admin-sidebar .top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-sidebar .top .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6439ff;
+}
+
+.admin-sidebar .center {
+    padding-left: 10px;
+}
+
+.admin-sidebar .center ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-sidebar .center ul .title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #999;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.admin-sidebar .center ul li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.admin-sidebar .center ul li:hover {
+    background-color: #ece8ff;
+}
+
+.admin-sidebar .center ul li .icon {
+    font-size: 18px;
+    color: #7451f8;
+}
+
+.admin-sidebar .center ul li span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    margin-left: 10px;
+}
+
+.admin-sidebar .bottom {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.admin-sidebar .bottom .colorOption {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #7451f8;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+
+
+/* Data Table */
+.datatable {
+    height: 600px;
+    padding: 20px;
+}
+
+.datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.datatableTitle .link {
+    text-decoration: none;
+    color: green;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid green;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cellWithImg {
+    display: flex;
+    align-items: center;
+}
+
+.cellImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cellWithStatus .active {
+    background-color: rgba(0, 128, 0, 0.05);
+    color: green;
+}
+.cellWithStatus .pending {
+    background-color: rgba(255, 217, 0, 0.05);
+    color: goldenrod;
+}
+.cellWithStatus .passive {
+    background-color: rgba(255, 0, 0, 0.05);
+    color: crimson;
+}
+
+.cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cellAction .viewButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    border: 1px dotted rgba(0, 0, 139, 0.596);
+    cursor: pointer;
+}
+
+.cellAction .deleteButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: crimson;
+    border: 1px dotted rgba(220, 20, 60, 0.6);
+    cursor: pointer;
+}
+
+
+/* users */
+.admin-list {
+    display: flex;
+    width: 100%;
+}
+
+.admin-list .listContainer {
+    flex: 6;
+}
+
+/* modal */
+.rs-modal-body {
+    padding-left: 30px;
+    padding-right: 30px;
+}

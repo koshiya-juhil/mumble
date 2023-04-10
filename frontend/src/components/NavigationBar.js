@@ -61,38 +61,42 @@ function NavigationBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <div className='d-flex align-items-center' style={{color : "white", marginRight: "10px"}}>
-              <Badge color="secondary" badgeContent={getCurrentState().notifications.length}>
-                <NotificationsNoneIcon onClick={(e) => setAnchorEl(e.currentTarget)} style={{cursor: "pointer"}}></NotificationsNoneIcon>
-              </Badge>
-              <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={open}
-                onClose={() => setAnchorEl(null)}
-                onClick={() => setAnchorEl(null)}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-              >
-                {
-                  !getCurrentState().notifications.length ?
-                    <MenuItem>
-                      No Messages
-                    </MenuItem>
-                  : 
-                  getCurrentState().notifications.map((data) => (
-                    <MenuItem key={data._id} onClick={(e) => {e.preventDefault(); redirectToChat(data.chatid, data)}}>
-                      {
-                        data.chatid.isGroupChat ?
-                        `New Message in ${data.chatid.chatName}`
-                        : `New Message from ${data.sender.username}`
-                      }
-                    </MenuItem>
-                  ))
-                }
-              </Menu>
-            </div>
             {
+              pagename == "admin" ? <></> :
+              <div className='d-flex align-items-center' style={{color : "white", marginRight: "10px"}}>
+                <Badge color="secondary" badgeContent={getCurrentState().notifications.length}>
+                  <NotificationsNoneIcon onClick={(e) => setAnchorEl(e.currentTarget)} style={{cursor: "pointer"}}></NotificationsNoneIcon>
+                </Badge>
+                <Menu
+                  anchorEl={anchorEl}
+                  id="account-menu"
+                  open={open}
+                  onClose={() => setAnchorEl(null)}
+                  onClick={() => setAnchorEl(null)}
+                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                >
+                  {
+                    !getCurrentState().notifications.length ?
+                      <MenuItem>
+                        No Messages
+                      </MenuItem>
+                    : 
+                    getCurrentState().notifications.map((data) => (
+                      <MenuItem key={data._id} onClick={(e) => {e.preventDefault(); redirectToChat(data.chatid, data)}}>
+                        {
+                          data.chatid.isGroupChat ?
+                          `New Message in ${data.chatid.chatName}`
+                          : `New Message from ${data.sender.username}`
+                        }
+                      </MenuItem>
+                    ))
+                  }
+                </Menu>
+              </div>
+            }
+            {
+              pagename == 'admin' ? <></> : 
               pagename == '' || pagename == 'signup' || pagename == 'login'
               ?
                 <LinkContainer to="/login">

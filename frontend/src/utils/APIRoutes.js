@@ -8,10 +8,14 @@ export const sendMessageRoute = `${host}/messages/addmsg`
 export const getAllMessagesRoute = `${host}/messages/getmsg`
 export const createGroupRoute = `${host}/chat/group`
 export const getChats = `${host}/chat/list`
+export const getGroups = `${host}/chat/group/list`
 export const renameGroup = `${host}/chat/group/rename`
 export const addUserToGroup = `${host}/chat/group/add`
 export const removeUserFromGroup = `${host}/chat/group/remove`
 export const updateGroupUsers = `${host}/chat/group/update`
+
+export const updateUser = `${host}/user/update`
+export const deleteUser = `${host}/user/delete`
 
 export const mumbleAI = `${host}/mumbleai`
 
