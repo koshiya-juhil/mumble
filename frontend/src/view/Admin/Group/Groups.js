@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
+import Sidebar from '../Sidebar'
 import axios from 'axios'
-import { allUsersRoute, getGroups, signupRoute } from '../../utils/APIRoutes'
-import { setProps } from '../../redux/action'
+import { allUsersRoute, getGroups, signupRoute } from '../../../utils/APIRoutes'
+import { setProps } from '../../../redux/action'
 import { connect } from 'react-redux'
-import FormModal from './FormModal'
-import { store } from '../..'
+import FormModal from '../Users/FormModal'
+import { store } from '../../..'
 import { ToastContainer, toast } from 'react-toastify'
-import { updateUser } from '../../utils/APIRoutes'
-import { IISMethods } from '../../config/IISMethods'
+import { updateUser } from '../../../utils/APIRoutes'
+import { IISMethods } from '../../../config/IISMethods'
 import GroupTable from './GroupTable'
+import GroupFormModal from './GroupFormModal'
 
 function Groups(props) {
 
@@ -120,13 +121,13 @@ function Groups(props) {
                 <Sidebar/>
                 <div className="listContainer">
                     {/* <Navbar/> */}
-                    {/* <FormModal
+                    <GroupFormModal
                         handleGrid={handleGrid}
                         formModal={formModal}
                         setFormModal={setFormModal}
                         handleFormData={handleFormData}
                         handleAddButtonClick={handleAddButtonClick}
-                    /> */}
+                    />
                     <GroupTable
                         handleGrid={handleGrid}
                         setFormData={setFormData}

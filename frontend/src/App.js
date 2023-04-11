@@ -10,8 +10,8 @@ import SetAvatar from "./view/SetAvatar"
 import MumbleAI from "./view/MumbleAI"
 import AdminLogin from "./view/Admin/AdminLogin"
 import AdminHome from "./view/Admin/AdminHome"
-import Users from "./view/Admin/Users"
-import Groups from "./view/Admin/Groups"
+import Users from "./view/Admin/Users/Users"
+import Groups from "./view/Admin/Group/Groups"
 
 function App() {
   return (

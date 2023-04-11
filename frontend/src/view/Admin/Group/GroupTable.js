@@ -1,17 +1,17 @@
 // import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "./datatablesource";
+import { groupColumns, userColumns, userRows } from "../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { store } from "../..";
+import { store } from "../../..";
 import { connect } from "react-redux";
 import axios from "axios";
-import { deleteUser, updateUser } from "../../utils/APIRoutes";
-import { IISMethods } from "../../config/IISMethods";
-import { setProps } from '../../redux/action'
+import { deleteUser, updateUser } from "../../../utils/APIRoutes";
+import { IISMethods } from "../../../config/IISMethods";
+import { setProps } from '../../../redux/action'
 import { Button } from "@mui/material";
 
-const DataTable = (props) => {
+const GroupTable = (props) => {
     const getCurrentState = () => {
         return store.getState()
     }
@@ -54,16 +54,13 @@ const DataTable = (props) => {
     return (
         <div className="datatable">
         <div className="datatableTitle">
-            Users
-            {/* <button className="link" >
-                Create User
-            </button> */}
-            <Button variant="contained" onClick={() => props.setFormData()}>Create User</Button>
+            Groups
+            <Button variant="contained" onClick={() => props.setFormData()}>Create Group</Button>
         </div>
         <DataGrid
             className="datagrid"
-            rows={getCurrentState().userData}
-            columns={userColumns.concat(actionColumn)}
+            rows={getCurrentState().groupData}
+            columns={groupColumns.concat(actionColumn)}
             pageSize={9}
             rowsPerPageOptions={[9]}
             getRowId={(row) => row._id}
@@ -81,4 +78,4 @@ const mapDispatchToProps = dispatch => ({
     setProps : (payload) => dispatch(setProps(payload))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(DataTable)
+export default connect(mapStateToProps,mapDispatchToProps)(GroupTable)

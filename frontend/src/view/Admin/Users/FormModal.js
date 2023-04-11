@@ -2,7 +2,7 @@ import React from 'react'
 import "rsuite/dist/rsuite.min.css";
 // import 'rsuite/dist/styles/rsuite-default.css';
 import { Button, Modal } from 'rsuite';
-import { store } from '../..';
+import { store } from '../../..';
 import { connect } from 'react-redux';
 import { TextField } from '@mui/material';
 

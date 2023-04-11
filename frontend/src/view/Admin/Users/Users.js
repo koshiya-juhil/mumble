@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
+import Sidebar from '../Sidebar'
 import DataTable from './DataTable'
 import axios from 'axios'
-import { allUsersRoute, signupRoute } from '../../utils/APIRoutes'
-import { setProps } from '../../redux/action'
+import { allUsersRoute, signupRoute } from '../../../utils/APIRoutes'
+import { setProps } from '../../../redux/action'
 import { connect } from 'react-redux'
 import FormModal from './FormModal'
-import { store } from '../..'
+import { store } from '../../..'
 import { ToastContainer, toast } from 'react-toastify'
-import { updateUser } from '../../utils/APIRoutes'
-import { IISMethods } from '../../config/IISMethods'
+import { updateUser } from '../../../utils/APIRoutes'
+import { IISMethods } from '../../../config/IISMethods'
 
 function Users(props) {
 
