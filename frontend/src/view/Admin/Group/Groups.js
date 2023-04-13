@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import axios from 'axios'
-import { allUsersRoute, getGroups, signupRoute } from '../../../utils/APIRoutes'
+import { allUsersRoute, createGroupRoute, getGroups, signupRoute } from '../../../utils/APIRoutes'
 import { setProps } from '../../../redux/action'
 import { connect } from 'react-redux'
 import FormModal from '../Users/FormModal'
@@ -19,6 +19,9 @@ function Groups(props) {
     }
 
     const [formModal, setFormModal] = useState(false)
+
+    const [personName, setPersonName] = React.useState([])
+    const [adminName, setAdminName] = React.useState()
 
     useEffect(() => {
         async function runUseEffect(){
@@ -44,10 +47,16 @@ function Groups(props) {
         setFormModal(true)
         let tempFormData = {}
         if(id){
-            tempFormData._id = data._id
-            tempFormData.username = data.username
-            tempFormData.email = data.email
-            tempFormData.password = data.password
+            setAdminName(IISMethods.getobjectfromarray(getCurrentState().userData, '_id', data.groupAdmin[0]._id).username)
+            let tempArr = []
+            data.users.map((user) => tempArr.push(user.username))
+            setPersonName(tempArr)
+
+            tempFormData.groupAdmin = data.groupAdmin[0]._id
+            tempFormData = data
+        }
+        else {
+            tempFormData.users = []
         }
         
         await props.setProps({formData : tempFormData})
@@ -72,18 +81,14 @@ function Groups(props) {
 
     const addData = async () => {
         try {
-            const { data } = await axios.post(signupRoute, getCurrentState().formData)
-            if(data.status === false){
-                generateError(data.msg)
-            }
+            const { data } = await axios.post(createGroupRoute, {
+                name : getCurrentState().formData.chatName,
+                users : JSON.stringify(getCurrentState().formData.users),
+                loggedInUser : getCurrentState().formData.groupAdmin
+            })
+            let tempData = [data, ...getCurrentState().groupData]
+            await props.setProps({groupData : tempData})
 
-            if(data.status === true){
-                setFormModal(false)
-                let tempData = [...getCurrentState().userData]
-                const obj = data.user
-                tempData.push(obj)
-                await props.setProps({userData : tempData})
-            }
         } catch (error) {
             console.log(error)
         }
@@ -127,6 +132,11 @@ function Groups(props) {
                         setFormModal={setFormModal}
                         handleFormData={handleFormData}
                         handleAddButtonClick={handleAddButtonClick}
+
+                        setAdminName={setAdminName}
+                        adminName={adminName}
+                        setPersonName={setPersonName}
+                        personName={personName}
                     />
                     <GroupTable
                         handleGrid={handleGrid}

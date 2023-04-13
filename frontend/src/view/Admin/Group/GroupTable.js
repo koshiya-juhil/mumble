@@ -6,15 +6,26 @@ import { useState } from "react";
 import { store } from "../../..";
 import { connect } from "react-redux";
 import axios from "axios";
-import { deleteUser, updateUser } from "../../../utils/APIRoutes";
+import { allUsersRoute, deleteUser, updateUser } from "../../../utils/APIRoutes";
 import { IISMethods } from "../../../config/IISMethods";
 import { setProps } from '../../../redux/action'
 import { Button } from "@mui/material";
+import { useEffect } from "react";
 
 const GroupTable = (props) => {
     const getCurrentState = () => {
         return store.getState()
     }
+
+    useEffect(() => {
+        async function runUseEffect(){
+            // debugger
+            const data = await axios.get(`${allUsersRoute}/64086e1fac22ad218d17bb7f`)
+            // data.data.map(obj => obj.id = obj._id)
+            await props.setProps({userData : data.data})
+        }
+        runUseEffect()
+    }, [])
 
     // const [data, setData] = useState(userRows)
 

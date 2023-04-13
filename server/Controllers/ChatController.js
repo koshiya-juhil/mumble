@@ -130,7 +130,7 @@ const createGroupChat = async (req, res) => {
 }
 
 // rename group name
-const updateGroup = async (req, res) => {
+const renameGroup = async (req, res) => {
     const { chatId, chatName } = req.body
 
     const updatedChat = await Chat.findByIdAndUpdate(
@@ -206,4 +206,4 @@ const removeFromGroup = async (req, res) => {
     }
 }
 
-module.exports = { accessChat, fetchChats, createGroupChat, updateGroup, addToGroup, removeFromGroup, listGroups }
+module.exports = { accessChat, fetchChats, createGroupChat, renameGroup, addToGroup, removeFromGroup, listGroups }
