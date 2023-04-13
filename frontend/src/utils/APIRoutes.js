@@ -13,6 +13,8 @@ export const renameGroup = `${host}/chat/group/rename`
 export const addUserToGroup = `${host}/chat/group/add`
 export const removeUserFromGroup = `${host}/chat/group/remove`
 export const updateGroupUsers = `${host}/chat/group/update`
+export const updateGroupInfo = `${host}/chat/group/updategroup`
+export const deleteGroup = `${host}/chat/group/delete`
 
 export const updateUser = `${host}/user/update`
 export const deleteUser = `${host}/user/delete`

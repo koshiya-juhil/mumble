@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import axios from 'axios'
-import { allUsersRoute, createGroupRoute, getGroups, signupRoute } from '../../../utils/APIRoutes'
+import { allUsersRoute, createGroupRoute, getGroups, signupRoute, updateGroupInfo } from '../../../utils/APIRoutes'
 import { setProps } from '../../../redux/action'
 import { connect } from 'react-redux'
 import FormModal from '../Users/FormModal'
@@ -96,17 +96,23 @@ function Groups(props) {
 
     const updateData = async () => {
         try {
-            const { data } = await axios.put(updateUser, getCurrentState().formData)
+            const { data } = await axios.put(updateGroupInfo, {
+                chatId : getCurrentState().formData._id,
+                chatName : getCurrentState().formData.chatName,
+                users : getCurrentState().formData.users,
+                groupAdmin : getCurrentState().formData.groupAdmin,
+                isBlocked : getCurrentState().formData.isBlocked
+            })
             if(data.status === 404){
                 generateError(data.msg)
             }
 
             // if(data.status === 200){
                 setFormModal(false)   
-                let tempData = [...getCurrentState().userData]
-                const index = IISMethods.getindexfromarray(tempData, '_id', getCurrentState().formData._id)
+                let tempData = [...getCurrentState().groupData]
+                const index = IISMethods.getindexfromarray(tempData, '_id', data._id)
                 tempData[index] = data
-                await props.setProps({userData: tempData})
+                await props.setProps({groupData: tempData})
             // }
         } catch (error) {
             console.log(error)

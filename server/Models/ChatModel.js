@@ -19,7 +19,8 @@ const ChatSchema = mongoose.Schema(
                 type : mongoose.Schema.Types.ObjectId,
                 ref : "Users"
             }
-        ]
+        ],
+        isBlocked : { type : Boolean, default : false }
     },
     { timestamps : true }
 )

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { store } from "../../..";
 import { connect } from "react-redux";
 import axios from "axios";
-import { allUsersRoute, deleteUser, updateUser } from "../../../utils/APIRoutes";
+import { allUsersRoute, deleteGroup, deleteUser, updateGroupInfo, updateUser } from "../../../utils/APIRoutes";
 import { IISMethods } from "../../../config/IISMethods";
 import { setProps } from '../../../redux/action'
 import { Button } from "@mui/material";
@@ -32,17 +32,32 @@ const GroupTable = (props) => {
     // console.log(getCurrentState().userData)
 
     const handleDelete = async (id) => {
-        const { res } = await axios.delete(deleteUser, {data : {"userid": id}})
+        const { res } = await axios.delete(deleteGroup, {data : {"chatId": id}})
 
-        const tempData = [...getCurrentState().userData]
+        const tempData = [...getCurrentState().groupData]
         const index = IISMethods.getindexfromarray(tempData, "_id", id)
         tempData.splice(index,1)
-        await props.setProps({ userData : tempData })
+        await props.setProps({ groupData : tempData })
     }
 
     const handleUserUpdate = async (obj) => {
-        obj.status = obj.status == "blocked" ? "active" : "blocked"
-        const { resdata } = await axios.put(updateUser, obj)
+        let tempObj = {}
+        let tempArr = []
+        obj.users.map((temp) => tempArr.push(temp._id))
+
+        tempObj.isBlocked = !obj.isBlocked
+        tempObj.chatId = obj._id
+        tempObj.groupAdmin = obj.groupAdmin[0]._id
+        tempObj.users = tempArr
+        tempObj.chatName = obj.chatName
+        const { data } = await axios.put(updateGroupInfo, tempObj)
+
+        console.log(data)
+
+        let tempData = [...getCurrentState().groupData]
+        const index = IISMethods.getindexfromarray(tempData, '_id', data._id)
+        tempData[index] = data
+        await props.setProps({groupData: tempData})
     }
 
     const actionColumn = [
@@ -55,12 +70,14 @@ const GroupTable = (props) => {
                 <div className="cellAction">
                     <div className="viewButton" onClick={() => props.setFormData(params.row._id, params.row)}>Edit</div>
                     <div className="deleteButton" onClick={() => handleDelete(params.row._id)}>Delete</div>
-                    <div className="deleteButton" onClick={() => handleUserUpdate(params.row)}>{params.row.status == "blocked" ? "UnBlock" : "Block"}</div>
+                    <div className="deleteButton" onClick={() => handleUserUpdate(params.row)}>{params.row.isBlocked ? "UnBlock" : "Block"}</div>
                 </div>
                 );
             },
         },
     ]
+
+    
 
     return (
         <div className="datatable">

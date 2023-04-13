@@ -37,5 +37,5 @@ module.exports.deleteUser = async (req, res) => {
 
     console.log(deletedUser)
 
-    res.json("User Deleted Success")
+    res.json("User Deleted Successfully")
 }

@@ -154,6 +154,42 @@ const renameGroup = async (req, res) => {
     }
 }
 
+// update group data
+const updateGroup = async (req, res) => {
+    const { chatId, chatName, users, groupAdmin, isBlocked } = req.body
+
+    const updatedChat = await Chat.findByIdAndUpdate(
+        chatId,
+        {
+            chatName : chatName,
+            users : users,
+            groupAdmin : groupAdmin,
+            isBlocked : isBlocked
+        },
+        {
+            new : true
+        }
+    )
+        .populate("users", "-password")
+        .populate("groupAdmin", "-password")
+    
+    if(!updatedChat){
+        res.status(404)
+        throw new Error("Chat Not Found")
+    }
+    else {
+        res.json(updatedChat)
+    }
+}
+
+// delete group
+const deleteGroup = async (req, res) => {
+    const { chatId } = req.body 
+    const deleteGroup = await Chat.deleteOne({_id : chatId})
+
+    res.json("Group Deleted Successfully")
+}
+
 // add to group
 const addToGroup = async (req, res) => {
     const { chatId, userId } = req.body
@@ -206,4 +242,4 @@ const removeFromGroup = async (req, res) => {
     }
 }
 
-module.exports = { accessChat, fetchChats, createGroupChat, renameGroup, addToGroup, removeFromGroup, listGroups }
+module.exports = { accessChat, fetchChats, createGroupChat, renameGroup, addToGroup, removeFromGroup, listGroups, updateGroup, deleteGroup }
