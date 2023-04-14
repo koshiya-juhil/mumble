@@ -10,8 +10,12 @@ import { store } from '../../..'
 import { ToastContainer, toast } from 'react-toastify'
 import { updateUser } from '../../../utils/APIRoutes'
 import { IISMethods } from '../../../config/IISMethods'
+import Navbar from '../Navbar'
+import { useNavigate } from 'react-router'
 
 function Users(props) {
+
+    const navigate = useNavigate()
 
     const getCurrentState = () => {
         return store.getState()
@@ -21,10 +25,15 @@ function Users(props) {
 
     useEffect(() => {
         async function runUseEffect(){
-            // debugger
-            const data = await axios.get(`${allUsersRoute}/64086e1fac22ad218d17bb7f`)
-            // data.data.map(obj => obj.id = obj._id)
-            await props.setProps({userData : data.data})
+            if(!localStorage.getItem("chat-app-admin")){
+                navigate("/admin")
+            }
+            else {
+                // debugger
+                const data = await axios.get(`${allUsersRoute}/64086e1fac22ad218d17bb7f`)
+                // data.data.map(obj => obj.id = obj._id)
+                await props.setProps({userData : data.data})
+            }
         }
         runUseEffect()
     }, [])
@@ -121,7 +130,7 @@ function Users(props) {
             <div className="admin-list">
                 <Sidebar/>
                 <div className="listContainer">
-                    {/* <Navbar/> */}
+                    <Navbar/>
                     <FormModal
                         handleGrid={handleGrid}
                         formModal={formModal}

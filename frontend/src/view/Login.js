@@ -52,30 +52,36 @@ function Login() {
 
         // JsCall.validateForm(state.loginFormData, state.loginValidations)
 
-        try {
-            const { data } = await axios.post(loginRoute, {
-                ...state.loginFormData,
-            })
-            // console.log("data",data)
-
-            if(data.status === false){
-                generateError(data.msg)
-            }
-
-            if(data.status === true){
-                localStorage.setItem("chat-app-user", JSON.stringify(data.user))
-                // console.log("###",data.user)
-                if(data.user.avatarImage){
-                    navigate("/home")
+        if(state.loginFormData.username && state.loginFormData.password){
+            try {
+                const { data } = await axios.post(loginRoute, {
+                    ...state.loginFormData,
+                })
+                // console.log("data",data)
+    
+                if(data.status === false){
+                    generateError(data.msg)
                 }
-                else {
-                    navigate("/setavatar")
+    
+                if(data.status === true){
+                    localStorage.setItem("chat-app-user", JSON.stringify(data.user))
+                    // console.log("###",data.user)
+                    if(data.user.avatarImage){
+                        navigate("/home")
+                    }
+                    else {
+                        navigate("/setavatar")
+                    }
                 }
+    
+            } catch (error) {
+                console.log(error)
             }
-
-        } catch (error) {
-            console.log(error)
         }
+        else {
+            generateError("Fill Required Data")
+        }
+
 
     }
  

@@ -57,23 +57,28 @@ const Signup = () => {
 
         // JsCall.validateForm(state.loginFormData, state.loginValidations)
 
-        try {
-            const { data } = await axios.post(signupRoute, {
-                ...state.signupFormData,
-            })
-            // console.log("data",data)
-
-            if(data.state === false){
-                generateError(data.msg)
+        if(state.signupFormData.email && state.signupFormData.username && state.signupFormData.password){
+            try {
+                const { data } = await axios.post(signupRoute, {
+                    ...state.signupFormData,
+                })
+                // console.log("data",data)
+    
+                if(data.state === false){
+                    generateError(data.msg)
+                }
+    
+                if(data.status === true){
+                    localStorage.setItem("chat-app-user", JSON.stringify(data.user))
+                    navigate("/setavatar")
+                }
+    
+            } catch (error) {
+                console.log(error)
             }
-
-            if(data.status === true){
-                localStorage.setItem("chat-app-user", JSON.stringify(data.user))
-                navigate("/setavatar")
-            }
-
-        } catch (error) {
-            console.log(error)
+        }
+        else {
+            generateError("Fill Required Data")
         }
 
     }

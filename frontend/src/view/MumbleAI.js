@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import send from '../assets/send.svg'
 import bot from '../assets/bot.svg'
 import user from '../assets/user.svg'
 import { mumbleAI } from '../utils/APIRoutes'
 import axios from 'axios'
 import NavigationBar from '../components/NavigationBar'
+import { useNavigate } from 'react-router'
 
 function MumbleAI() {
 
+    const navigate = useNavigate()
+
     const [promt, setPromt] = useState('')
     const [chatData, setChatData] = useState([])
+
+    useEffect(() => {
+        if(!localStorage.getItem("chat-app-user")){
+            navigate("/login")
+        }
+    }, [])
+    
 
     let loadInterval
 

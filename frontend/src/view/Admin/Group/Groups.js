@@ -11,8 +11,11 @@ import { updateUser } from '../../../utils/APIRoutes'
 import { IISMethods } from '../../../config/IISMethods'
 import GroupTable from './GroupTable'
 import GroupFormModal from './GroupFormModal'
+import { useNavigate } from 'react-router'
 
 function Groups(props) {
+
+    const navigate = useNavigate()
 
     const getCurrentState = () => {
         return store.getState()
@@ -25,8 +28,13 @@ function Groups(props) {
 
     useEffect(() => {
         async function runUseEffect(){
-            const data = await axios.post(`${getGroups}`)
-            await props.setProps({groupData : data.data})
+            if(!localStorage.getItem("chat-app-admin")){
+                navigate("/admin")
+            }
+            else {
+                const data = await axios.post(`${getGroups}`)
+                await props.setProps({groupData : data.data})
+            }
         }
         runUseEffect()
     }, [])

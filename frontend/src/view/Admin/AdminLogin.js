@@ -63,14 +63,8 @@ function AdminLogin() {
             }
 
             if(data.status === true){
-                localStorage.setItem("chat-app-user", JSON.stringify(data.user))
-                // console.log("###",data.user)
-                if(data.user.avatarImage){
-                    navigate("/admin/home")
-                }
-                else {
-                    // navigate("/setavatar")
-                }
+                localStorage.setItem("chat-app-admin", JSON.stringify(data.user))
+                navigate("/admin/users")
             }
 
         } catch (error) {

@@ -87,9 +87,7 @@ module.exports.adminLogin = async (req, res, next) => {
         if(!user || user.isAdmin || user.isAdmin == false){
             return res.json({ msg:"Incorrect Username", status: false })
         }
-        
-        console.log(user,"------------------------------------------------")
-        console.log(user.isAdmin,"isAdmin")
+    
 
         if(user.isAdmin == true){
             const isPasswordValid = await bcrypt.compare(password, user.password)
