@@ -106,7 +106,7 @@ function NavigationBar(props) {
               <>
                 <NavDropdown 
                   title={<>
-                    <img src={`data:image/svg+xml;base64,${currentUser?.avatarImage}`} style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
+                    <img src={`${currentUser?.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${currentUser?.avatarImage}`} style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
                     {currentUser?.username}
                     </>
                   }

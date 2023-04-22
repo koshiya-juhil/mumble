@@ -239,11 +239,11 @@
     } */
 }
 
-.contacts-main-div .contacts::-webkit-scrollbar {
+.contacts::-webkit-scrollbar {
     width: 0.2rem;
 }
 
-.contacts-main-div .contacts::-webkit-scrollbar-thumb {
+.contacts::-webkit-scrollbar-thumb {
     background-color: #ffffff39;
     width: 0.1rem;
     border-radius: 1rem;

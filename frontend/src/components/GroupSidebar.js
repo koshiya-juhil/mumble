@@ -210,7 +210,7 @@ function GroupSidebar(props) {
                                     return (
                                         <div className='d-flex' style={{ gap: "10px", margin: "10px 0px" }}>
                                             <div className="avatar">
-                                                <img src={`data:image/svg+xml;base64,${user.avatarImage}`} />
+                                                <img src={`${user.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${user.avatarImage}`} />
                                             </div>
                                             <div className="username">
                                                 <span>{user.username}</span>
@@ -263,7 +263,7 @@ function GroupSidebar(props) {
                                   return (
                                     <div className='contact' onClick={() => handleUsers(user, 'add')}>
                                       <div className='avatar'>
-                                        <img src={`data:image/svg+xml;base64,${user.avatarImage}`} />
+                                        <img src={`${user.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${user.avatarImage}`} />
                                       </div>
                                       <div className='username'>
                                         <span>{user.username}</span>

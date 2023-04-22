@@ -74,9 +74,16 @@ function Contacts(props) {
       }
     }
 
+    const generateError = (err) => {
+      toast.error(err, {
+          position: "bottom-right"
+      })
+    }
+
     const handleSubmit = async () => {
       // console.log(groupName, selectedUsers)
       if(!groupName || !selectedUsers){
+        generateError("Please fill all the field")
         toast({
           title : "Please fill all the field",
           status : "warning",
@@ -164,7 +171,7 @@ function Contacts(props) {
                             onClick={() => setShowUsers(!showUsers)}
                             // onBlur={() => setShowUsers(false)}
                           ></Form.Control>
-                          <div className='d-flex gap-1' style={{marginLeft : '4px'}}>
+                          <div className='d-flex gap-1' style={{marginLeft : '4px', flexWrap: "wrap"}}>
                             {
                               selectedUsers.map((user) => {
                                 return (
@@ -178,12 +185,12 @@ function Contacts(props) {
                           </div>
                           {
                             showUsers ?
-                              <div className='contacts'>
+                              <div className='contacts' style={{maxHeight: "345px"}}>
                                 {props.contacts.filter(obj => obj._id !== getCurrentState().currentUser._id).map((user) => {
                                   return (
                                     <div className='contact' onClick={() => handleGroup(user, 'add')}>
                                       <div className='avatar'>
-                                        <img src={`data:image/svg+xml;base64,${user.avatarImage}`} />
+                                        <img src={`${user.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${user.avatarImage}`} />
                                       </div>
                                       <div className='username'>
                                         <span>{user.username}</span>
@@ -242,7 +249,7 @@ function Contacts(props) {
                                   onClick={() => changeCurrentChat(index, contact)}
                                 >
                                     <div className="avatar">
-                                      <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} />
+                                      <img src={`${contact.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${contact.avatarImage}`} style={{borderRadius: "50%"}}/>
                                     </div>
                                     <div className="username">
                                       <span>{contact.username}</span>

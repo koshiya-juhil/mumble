@@ -46,15 +46,15 @@ const Sidebar = () => {
               <span>Groups</span>
             </li>
           </Link>
-          <li>
+          {/* <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
-          <p className="title">USER</p>
+          </li> */}
+          {/* <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
-          </li>
+          </li> */}
           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

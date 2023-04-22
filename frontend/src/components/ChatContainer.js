@@ -11,6 +11,7 @@ import typingData from '../assets/typing.json'
 import { connect } from 'react-redux'
 import { store } from '../index'
 import { setProps } from '../redux/action'
+import { IISMethods } from '../config/IISMethods'
 
 function ChatContainer(props) {
 
@@ -126,7 +127,7 @@ function ChatContainer(props) {
                       getCurrentState().selectedChat.isGroupChat ? 
                         <span class="material-symbols-outlined" style={{color: '#ffffff'}}>tag</span>
                       :
-                        <img src={`data:image/svg+xml;base64,${getCurrentState().selectedChat.users.filter(a => a._id !== getCurrentState().currentUser._id)[0].avatarImage}`} style={{height: "2rem"}}/>
+                        <img src={`${getCurrentState().selectedChat.users.filter(a => a._id !== getCurrentState().currentUser._id)[0].isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${getCurrentState().selectedChat.users.filter(a => a._id !== getCurrentState().currentUser._id)[0].avatarImage}`} style={{height: "2rem", borderRadius: "50%"}}/>
                     }
                         {/* <img src={`data:image/svg+xml;base64,${props.currentChat.avatarImage}`} style={{height: "2rem"}}/> */}
                   </div>
@@ -147,18 +148,18 @@ function ChatContainer(props) {
                 return (
                   <div ref={scrollRef} key={uuidv4()}>
                     {
-                      message.sender._id !== getCurrentState().currentUser._id && getCurrentState().selectedChat.isGroupChat ?
+                      message.sender?._id !== getCurrentState().currentUser?._id && getCurrentState().selectedChat.isGroupChat ?
                       <div className={"message received"} style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
                         <div className="content">
                           <div className='d-flex align-items-center'>
-                            <img src={`data:image/svg+xml;base64,${message.sender.avatarImage}`} style={{width: '20px', height: '20px'}} />
-                            <p style={{color: 'white', marginBottom : '0px', fontWeight: '600', marginLeft: '5px'}}>{message.sender.username}</p>
+                            <img src={`${IISMethods.getobjectfromarray(getCurrentState().userData, '_id', message.sender?._id)?.isAvatarImageSet ? 'data:image/svg+xml;base64,' : ''}${message.sender?.avatarImage}`} style={{width: '20px', height: '20px'}} />
+                            <p style={{color: 'white', marginBottom : '0px', fontWeight: '600', marginLeft: '5px'}}>{message.sender?.username}</p>
                           </div>
                           <p>{message.message.text}</p>
                         </div>
                       </div>
                         :
-                      <div className={`message ${message.sender._id == getCurrentState().currentUser._id ? "sended" : "received"} `}>
+                      <div className={`message ${message.sender?._id == getCurrentState().currentUser?._id ? "sended" : "received"} `}>
                         <div className="content">
                           <p>{message.message.text}</p>
                         </div>

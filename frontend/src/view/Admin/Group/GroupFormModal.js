@@ -83,7 +83,7 @@ const GroupFormModal = (props) => {
 
         <Modal open={props.formModal} size="xs" onClose={() => props.setFormModal(false)}>
             <Modal.Header>
-                <Modal.Title>{getCurrentState().formData._id ? "Update" : "Create"} User</Modal.Title>
+                <Modal.Title>{getCurrentState().formData._id ? "Update" : "Create"} Group</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <TextField id="form-groupname" label="Group Name" variant="standard" style={{width: "100%", marginBottom: "10px"}} 

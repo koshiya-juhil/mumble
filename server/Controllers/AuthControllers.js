@@ -67,6 +67,10 @@ module.exports.login = async (req, res, next) => {
             return res.json({ msg:"Incorrect Username", status: false })
         }
         
+        if(user.status == "blocked"){
+            return res.json({ msg:"Your account is suspended, please contact administrator to activate account", status: false })
+        }
+        
         const isPasswordValid = await bcrypt.compare(password, user.password)
         if(!isPasswordValid){
             return res.json({ msg:"Incorrect Password", status: false })

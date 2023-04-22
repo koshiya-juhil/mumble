@@ -6,6 +6,7 @@ import { mumbleAI } from '../utils/APIRoutes'
 import axios from 'axios'
 import NavigationBar from '../components/NavigationBar'
 import { useNavigate } from 'react-router'
+import { ToastContainer, toast } from 'react-toastify'
 
 function MumbleAI() {
 
@@ -76,78 +77,91 @@ function MumbleAI() {
         return `id${timestamp}${hexadecimalString}`;
     }
 
+    const generateError = (err) => {
+        toast.error(err, {
+            position: "bottom-right"
+        })
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const data = new FormData(document.getElementById('ai_form'))
-        const chatContainer = document.querySelector('#chat-container')
-        chatContainer.innerHTML += await chatStripe(false, promt)
-
-        chatData.push({
-            isAi : false,
-            value : promt,
-            id : ''
-        })
-
-        setChatData(chatData)
-        setPromt('')
-
-        const id = generateUniqueId()
-        const tempObj = {
-            isAi : true,
-            value : "",
-            id : id
-        }
-
-        chatData.push(tempObj)
-        setChatData(chatData)
-
-        chatContainer.innerHTML += await chatStripe(true, '', id)
-
-        // to focus scroll to the bottom 
-        chatContainer.scrollTop = chatContainer.scrollHeight
-        const messageDiv = document.getElementById(id)
-        
-        // console.log("messageDiv", messageDiv)
-        
-        loader(messageDiv)
-        
-
-        const response = await axios.post(mumbleAI, 
-            JSON.stringify({prompt : promt}),
-            {
-                headers : {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_SECRET_KEY}`
-                }
-            }
-        )
-
-        // const response = await fetch('http://localhost:4000/mumbleai', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_SECRET_KEY}`,
-        //     },
-        //     body: JSON.stringify({
-        //         prompt: promt
-        //     })
-        // })
-
-        clearInterval(loadInterval)
-        messageDiv.innerHTML = " "
-
-        if(response.status == 200){
-            const data = await response.data
-            const parsedData = data.bot.trim() // trims any trailing spaces /'\n'
-            typeText(messageDiv, parsedData)
+        if(!promt){
+            generateError("Please write prompt")
         }
         else {
-            const err = await response.text()
-            messageDiv.innerHTML = 'Something went wrong'
-            console.log(err)
-            alert(err)
+            const data = new FormData(document.getElementById('ai_form'))
+            const chatContainer = document.querySelector('#chat-container')
+            chatContainer.innerHTML += await chatStripe(false, promt)
+    
+            chatData.push({
+                isAi : false,
+                value : promt,
+                id : ''
+            })
+    
+            setChatData(chatData)
+            setPromt('')
+    
+            const id = generateUniqueId()
+            const tempObj = {
+                isAi : true,
+                value : "",
+                id : id
+            }
+    
+            chatData.push(tempObj)
+            setChatData(chatData)
+    
+            chatContainer.innerHTML += await chatStripe(true, '', id)
+    
+            // to focus scroll to the bottom 
+            chatContainer.scrollTop = chatContainer.scrollHeight
+            const messageDiv = document.getElementById(id)
+            
+            // console.log("messageDiv", messageDiv)
+            
+            loader(messageDiv)
+            
+    
+            const response = await axios.post(mumbleAI, 
+                JSON.stringify({prompt : promt}),
+                {
+                    headers : {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_SECRET_KEY}`
+                    }
+                }
+            )
+
+            // const response = await fetch('http://localhost:4000/mumbleai', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_SECRET_KEY}`,
+            //     },
+            //     body: JSON.stringify({
+            //         prompt: promt
+            //     })
+            // })
+    
+            clearInterval(loadInterval)
+            messageDiv.innerHTML = " "
+    
+            if(response.status == 200){
+                const data = await response.data
+                const parsedData = data.bot.trim() // trims any trailing spaces /'\n'
+                typeText(messageDiv, parsedData)
+            }
+            else {
+                const err = await response.text()
+                messageDiv.innerHTML = 'Something went wrong'
+                console.log(err)
+                alert(err)
+            }
         }
+
+
 
     }
 
@@ -181,7 +195,7 @@ function MumbleAI() {
                     </div>
                 </form>
             </div>
-
+            <ToastContainer ></ToastContainer>
         </>
     )
 }
