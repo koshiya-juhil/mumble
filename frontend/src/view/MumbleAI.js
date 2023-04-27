@@ -189,9 +189,16 @@ function MumbleAI() {
                     <div className='ai-form-box'>
                         <textarea className='ai-textarea' name="prompt" rows="1" cols="1" placeholder="Ask MumbleAI..."
                             onChange={(e) => setPromt(e.target.value)}
+                            onKeyPress={(e) => {
+                                if(e.key == 'Enter' && e.shiftKey == false){
+                                    handleSubmit(e)
+                                }
+                            }}
                             value={promt}
                         ></textarea>
-                        <button className='ai-textarea-btn' type='submit' onClick={(e) => handleSubmit(e)}><img src={send} alt="send" /></button>
+                        <button className='ai-textarea-btn' type='submit'
+                            onClick={(e) => handleSubmit(e)}
+                        ><img src={send} alt="send" /></button>
                     </div>
                 </form>
             </div>

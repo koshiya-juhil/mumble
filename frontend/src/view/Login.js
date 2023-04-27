@@ -58,7 +58,7 @@ function Login() {
                     ...state.loginFormData,
                 })
                 // console.log("data",data)
-    
+
                 if(data.status === false){
                     generateError(data.msg)
                 }
@@ -66,12 +66,13 @@ function Login() {
                 if(data.status === true){
                     localStorage.setItem("chat-app-user", JSON.stringify(data.user))
                     // console.log("###",data.user)
-                    if(data.user.avatarImage){
-                        navigate("/home")
-                    }
-                    else {
-                        navigate("/setavatar")
-                    }
+                    navigate("/home")
+                    // if(data.user.avatarImage){
+                    //     navigate("/home")
+                    // }
+                    // else {
+                    //     navigate("/setavatar")
+                    // }
                 }
     
             } catch (error) {
@@ -102,9 +103,9 @@ function Login() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control onChange={(e) => handleloginFormData("text","password",e.target.value)} id="form-password" type="password" placeholder="Password" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check onChange={(e) => handleloginFormData("checkbox","rememberme",e.target.checked)} type="checkbox" label="Remember me" />
-                        </Form.Group>
+                        </Form.Group> */}
                         <Button onClick={(e) => LogIn(e)} variant="primary" type="submit" style={{width: "100%"}}>
                             Login
                         </Button>

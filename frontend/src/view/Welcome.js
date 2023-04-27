@@ -1,8 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Row, Col, Button } from 'react-bootstrap'
 import NavigationBar from '../components/NavigationBar'
+import { useNavigate } from 'react-router'
 
 function Welcome() {
+    const navigate = useNavigate()
+
     return (
         <>
             <NavigationBar />
@@ -12,7 +15,7 @@ function Welcome() {
                     <div>
                         <h1>Share the world with your friends</h1>
                         <p>Chat App lets you connect with the world</p>
-                        <Button variant='success'>
+                        <Button variant='success' onClick={() => navigate('/login')}>
                             Get Started <i className='fas fa-comments home-message-icon'></i>
                         </Button>
                     </div>
