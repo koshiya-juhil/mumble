@@ -6,33 +6,33 @@ git clone https://github.com/koshiya-juhil/mumble.git
 ```
 
 ## FRONTEND SETUP
-## Navigate to the project directory:
+Navigate to the project directory:
 ```sh
 cd mumble/frontend
 ```
 
-## Install the dependencies:
+Install the dependencies:
 ```sh
 npm install
 ```
 
-## Start the development server:
+Start the development server:
 ```sh
 npm start
 ```
 
 ## BACKEND SETUP
-## Navigate to the project directory:
+Navigate to the project directory:
 ```sh
 cd mumble/server
 ```
 
-## Install the dependencies:
+Install the dependencies:
 ```sh
 npm install
 ```
 
-## Start the development server:
+Start the development server:
 ```sh
 npm start
 ```
